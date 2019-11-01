@@ -1,0 +1,26 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Create S3 Bucket",
+    "Parameters":{
+    		"IAMUserID":{
+    				"Type": "String"
+    								}
+    							},
+    "Resources": {
+        "myuser": {
+        		"Type": "AWS::IAM::User",
+        		"Properties": {
+        				"UserName": {"Ref" : "IAMUserID"},
+        				"ManagedPolicyArns": ["arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"]
+        								}
+        			},       
+        "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                 "AccessControl": "PublicRead",
+                 "BucketName": "s3tempbucketsachin"
+                            }
+                     }
+
+      }
+   }
